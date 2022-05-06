@@ -5,9 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 interface Props {
     size?: number,
-    color?: string,
     path: string,
-    styles?: object
+    style?: React.CSSProperties
 }
 
 const getThemeObj = (theme: Theme) => {
@@ -23,10 +22,10 @@ const SvgIconRenderer: React.FC<Props> = (props) => {
     // const {} = useAppState()
 
     const classes = useStyles();
-    const { color = "#FFFFFF", size = 24, path, styles } = props;
+    const { size = 24, path, style } = props;
 
-    return <svg style={{ width: size, height: size, ...styles }} viewBox="0 0 24 24">
-        <path fill={color}
+    return <svg style={{ width: size, height: size, ...style }} viewBox="0 0 24 24">
+        <path fill={style?.color ?? "#FFF"}
             d={path} />
     </svg>
 };
